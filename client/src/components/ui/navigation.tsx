@@ -17,19 +17,20 @@ export default function Navigation() {
                 className="h-12 w-12 object-contain"
               />
               <span className="text-xs text-portfolio-primary font-medium mt-1 text-center leading-tight">
-                Statistical Institute of<br />Research and Science
+                
               </span>
             </div>
-            <span className="ml-4 text-sm text-portfolio-muted hidden lg:block">Excellence in Analytics</span>
+            <span className="ml-4 text-sm text-portfolio-muted hidden sm:block">Statistical Institute of<br />Research and Science</span>
           </div>
           
           <div className="hidden md:flex space-x-8">
             <a href="#home" className="text-portfolio-text hover:text-portfolio-secondary transition-colors duration-200 font-medium">Home</a>
             <a href="#expertise" className="text-portfolio-text hover:text-portfolio-secondary transition-colors duration-200 font-medium">Expertise</a>
+            <a href="#tools" className="text-portfolio-text hover:text-portfolio-secondary transition-colors duration-200 font-medium">Tools</a>
             <a href="#services" className="text-portfolio-text hover:text-portfolio-secondary transition-colors duration-200 font-medium">Services</a>
             <a href="#projects" className="text-portfolio-text hover:text-portfolio-secondary transition-colors duration-200 font-medium">Research</a>
             <a href="#visualizations" className="text-portfolio-text hover:text-portfolio-secondary transition-colors duration-200 font-medium">Visualizations</a>
-            {/* <a href="#team" className="text-portfolio-text hover:text-portfolio-secondary transition-colors duration-200 font-medium">Team</a> */}
+            <a href="#team" className="text-portfolio-text hover:text-portfolio-secondary transition-colors duration-200 font-medium">Team</a>
             <a href="#contact" className="text-portfolio-text hover:text-portfolio-secondary transition-colors duration-200 font-medium">Contact</a>
           </div>
           
@@ -47,6 +48,7 @@ export default function Navigation() {
             <div className="flex flex-col space-y-4">
               <a href="#home" className="text-portfolio-text hover:text-portfolio-secondary transition-colors duration-200 font-medium" onClick={() => setIsMenuOpen(false)}>Home</a>
               <a href="#expertise" className="text-portfolio-text hover:text-portfolio-secondary transition-colors duration-200 font-medium" onClick={() => setIsMenuOpen(false)}>Expertise</a>
+              <a href="#tools" className="text-portfolio-text hover:text-portfolio-secondary transition-colors duration-200 font-medium" onClick={() => setIsMenuOpen(false)}>Tools</a>
               <a href="#services" className="text-portfolio-text hover:text-portfolio-secondary transition-colors duration-200 font-medium" onClick={() => setIsMenuOpen(false)}>Services</a>
               <a href="#projects" className="text-portfolio-text hover:text-portfolio-secondary transition-colors duration-200 font-medium" onClick={() => setIsMenuOpen(false)}>Research</a>
               <a href="#visualizations" className="text-portfolio-text hover:text-portfolio-secondary transition-colors duration-200 font-medium" onClick={() => setIsMenuOpen(false)}>Visualizations</a>

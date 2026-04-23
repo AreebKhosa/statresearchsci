@@ -24,120 +24,122 @@ const riskData = [
   { category: 'Very High', probability: 5 }
 ];
 
-const correlationData = [
-  { temperature: 15, humidity: 85, precipitation: 25 },
-  { temperature: 20, humidity: 78, precipitation: 18 },
-  { temperature: 25, humidity: 65, precipitation: 12 },
-  { temperature: 30, humidity: 52, precipitation: 8 },
-  { temperature: 35, humidity: 38, precipitation: 3 },
-  { temperature: 18, humidity: 82, precipitation: 22 },
-  { temperature: 22, humidity: 75, precipitation: 15 },
-  { temperature: 28, humidity: 58, precipitation: 10 },
-  { temperature: 32, humidity: 45, precipitation: 5 },
-  { temperature: 16, humidity: 88, precipitation: 28 },
-  { temperature: 24, humidity: 68, precipitation: 14 },
-  { temperature: 29, humidity: 55, precipitation: 9 }
-];
 
 export default function VisualizationsSection() {
   return (
-    <section id="visualizations" className="py-12 bg-gray-50">
+    <section id="visualizations" className="py-16 md:py-20 pb-8 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 fade-in">
-          <h2 className="text-4xl font-bold text-portfolio-primary mb-4">Interactive Data Visualizations</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Explore interactive charts and visualizations that demonstrate my analytical capabilities and data storytelling expertise
+          <p className="text-xs font-semibold tracking-[0.2em] uppercase text-portfolio-secondary mb-3">
+            Analytics &amp; Dashboards
+          </p>
+          <h2 className="text-4xl sm:text-5xl font-bold text-portfolio-primary leading-tight mb-5">
+            Interactive Visualizations
+          </h2>
+          <p className="text-lg text-gray-500 max-w-3xl mx-auto leading-relaxed">
+            Explore interactive charts and visualizations that demonstrate my analytical capabilities and data storytelling expertise.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 mb-16">
-          <div className="bg-white p-8 rounded-2xl shadow-lg fade-in">
-            <h3 className="text-2xl font-bold text-portfolio-primary mb-6">Patient Outcome Trends</h3>
-            <div className="h-80 mb-4">
+        <div className="grid lg:grid-cols-2 gap-10 mb-10">
+          <div 
+            className="bg-white p-8 sm:p-10 rounded-2xl border border-gray-100 fade-in"
+            style={{ boxShadow: "0 8px 30px rgba(0,0,0,0.04), 0 2px 10px rgba(0,0,0,0.02)" }}
+          >
+            <h3 className="text-xl font-bold text-gray-900 mb-8">Patient Outcome Trends</h3>
+            <div className="h-80 mb-6">
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={outcomeData}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="month" />
-                  <YAxis domain={[70, 100]} />
-                  <Tooltip />
-                  <Legend />
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f3f4f6" />
+                  <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{fill: '#9ca3af', fontSize: 12}} dy={10} />
+                  <YAxis domain={[70, 100]} axisLine={false} tickLine={false} tick={{fill: '#9ca3af', fontSize: 12}} dx={-10} />
+                  <Tooltip 
+                    contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 4px 20px rgba(0,0,0,0.1)' }}
+                  />
+                  <Legend wrapperStyle={{ paddingTop: '20px' }} iconType="circle" />
                   <Line 
                     type="monotone" 
                     dataKey="recoveryRate" 
-                    stroke="#3498DB" 
+                    stroke="#1d6fa4" 
                     strokeWidth={3}
+                    dot={{ stroke: '#1d6fa4', strokeWidth: 2, r: 4, fill: '#fff' }}
+                    activeDot={{ r: 6, fill: '#1d6fa4', stroke: '#fff', strokeWidth: 2 }}
                     name="Recovery Rate %" 
                   />
                   <Line 
                     type="monotone" 
                     dataKey="confidenceInterval" 
-                    stroke="#E74C3C" 
+                    stroke="#b45309" 
                     strokeWidth={2}
                     strokeDasharray="5 5"
+                    dot={false}
                     name="Confidence Interval" 
                   />
                 </LineChart>
               </ResponsiveContainer>
             </div>
-            <p className="text-gray-600">Statistical analysis showing improvement in patient outcomes over 24-month study period with 95% confidence intervals.</p>
+            <p className="text-sm text-gray-500 leading-relaxed border-t border-gray-100 pt-5 mt-2">
+              Statistical analysis showing improvement in patient outcomes over 24-month study period with 95% confidence intervals.
+            </p>
           </div>
 
-          <div className="bg-white p-8 rounded-2xl shadow-lg fade-in">
-            <h3 className="text-2xl font-bold text-portfolio-primary mb-6">Risk Distribution Analysis</h3>
-            <div className="h-80 mb-4">
+          <div 
+            className="bg-white p-8 sm:p-10 rounded-2xl border border-gray-100 fade-in"
+            style={{ boxShadow: "0 8px 30px rgba(0,0,0,0.04), 0 2px 10px rgba(0,0,0,0.02)" }}
+          >
+            <h3 className="text-xl font-bold text-gray-900 mb-8">Risk Distribution Analysis</h3>
+            <div className="h-80 mb-6">
               <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={riskData}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="category" />
-                  <YAxis />
-                  <Tooltip />
-                  <Bar dataKey="probability" fill="#27AE60" />
+                <BarChart data={riskData} margin={{ top: 20, right: 0, left: -20, bottom: 0 }}>
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f3f4f6" />
+                  <XAxis dataKey="category" axisLine={false} tickLine={false} tick={{fill: '#9ca3af', fontSize: 12}} dy={10} />
+                  <YAxis axisLine={false} tickLine={false} tick={{fill: '#9ca3af', fontSize: 12}} />
+                  <Tooltip 
+                    contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 4px 20px rgba(0,0,0,0.1)' }}
+                    cursor={{ fill: 'rgba(21,128,61,0.05)' }}
+                  />
+                  <Bar dataKey="probability" fill="#15803d" radius={[6, 6, 0, 0]} barSize={40} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
-            <p className="text-gray-600">Probability distribution of financial risk factors using Bayesian inference and Monte Carlo simulation methods.</p>
+            <p className="text-sm text-gray-500 leading-relaxed border-t border-gray-100 pt-5 mt-2">
+              Probability distribution of financial risk factors using Bayesian inference and Monte Carlo simulation methods.
+            </p>
           </div>
         </div>
 
-        <div className="bg-white p-8 rounded-2xl shadow-lg fade-in mb-16">
-          <h3 className="text-2xl font-bold text-portfolio-primary mb-6 text-center">Climate Data Correlation Matrix</h3>
-          <div className="h-96 mb-4">
-            <ResponsiveContainer width="100%" height="100%">
-              <ScatterChart data={correlationData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="temperature" name="Temperature" unit="°C" />
-                <YAxis name="Humidity/Precipitation" unit="%" />
-                <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-                <Legend />
-                <Scatter name="Temperature vs Humidity" dataKey="humidity" fill="#3498DB" />
-                <Scatter name="Temperature vs Precipitation" dataKey="precipitation" fill="#E74C3C" />
-              </ScatterChart>
-            </ResponsiveContainer>
-          </div>
-          <p className="text-gray-600 text-center">Correlation analysis of multiple climate variables across global monitoring stations using hierarchical clustering.</p>
-        </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="text-center p-6 bg-white rounded-xl shadow-lg fade-in">
-            <div className="w-16 h-16 bg-portfolio-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <BarChart3 className="h-8 w-8 text-portfolio-secondary" />
+
+        <div className="grid sm:grid-cols-3 gap-6 lg:gap-10">
+          <div 
+            className="text-center p-8 bg-white rounded-2xl border border-gray-100 fade-in transition-all duration-300 hover:-translate-y-1"
+            style={{ boxShadow: "0 4px 20px rgba(0,0,0,0.03), 0 1px 4px rgba(0,0,0,0.02)" }}
+          >
+            <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6" style={{ backgroundColor: "rgba(29,111,164,0.1)", boxShadow: "0 4px 12px rgba(29,111,164,0.15)" }}>
+              <BarChart3 className="h-8 w-8" style={{ color: "#1d6fa4" }} />
             </div>
-            <h4 className="text-xl font-semibold text-portfolio-primary mb-2">50+ Visualizations</h4>
-            <p className="text-gray-600">Interactive charts and dashboards created for research publications and presentations</p>
+            <h4 className="text-2xl font-bold text-gray-900 mb-3">50+ Visualizations</h4>
+            <p className="text-sm text-gray-500 leading-relaxed">Interactive charts and dashboards created for research publications and presentations</p>
           </div>
-          <div className="text-center p-6 bg-white rounded-xl shadow-lg fade-in">
-            <div className="w-16 h-16 bg-portfolio-success/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Database className="h-8 w-8 text-portfolio-success" />
+          <div 
+            className="text-center p-8 bg-white rounded-2xl border border-gray-100 fade-in transition-all duration-300 hover:-translate-y-1"
+            style={{ boxShadow: "0 4px 20px rgba(0,0,0,0.03), 0 1px 4px rgba(0,0,0,0.02)" }}
+          >
+            <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6" style={{ backgroundColor: "rgba(21,128,61,0.1)", boxShadow: "0 4px 12px rgba(21,128,61,0.15)" }}>
+              <Database className="h-8 w-8" style={{ color: "#15803d" }} />
             </div>
-            <h4 className="text-xl font-semibold text-portfolio-primary mb-2">1TB+ Data Analyzed</h4>
-            <p className="text-gray-600">Large-scale datasets processed and visualized across multiple research domains</p>
+            <h4 className="text-2xl font-bold text-gray-900 mb-3">1TB+ Data Analyzed</h4>
+            <p className="text-sm text-gray-500 leading-relaxed">Large-scale datasets processed and visualized across multiple research domains</p>
           </div>
-          <div className="text-center p-6 bg-white rounded-xl shadow-lg fade-in">
-            <div className="w-16 h-16 bg-portfolio-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Users className="h-8 w-8 text-portfolio-accent" />
+          <div 
+            className="text-center p-8 bg-white rounded-2xl border border-gray-100 fade-in transition-all duration-300 hover:-translate-y-1"
+            style={{ boxShadow: "0 4px 20px rgba(0,0,0,0.03), 0 1px 4px rgba(0,0,0,0.02)" }}
+          >
+            <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6" style={{ backgroundColor: "rgba(124,58,237,0.1)", boxShadow: "0 4px 12px rgba(124,58,237,0.15)" }}>
+              <Users className="h-8 w-8" style={{ color: "#7c3aed" }} />
             </div>
-            <h4 className="text-xl font-semibold text-portfolio-primary mb-2">25+ Collaborations</h4>
-            <p className="text-gray-600">Cross-disciplinary partnerships with researchers, institutions, and industry leaders</p>
+            <h4 className="text-2xl font-bold text-gray-900 mb-3">25+ Collaborations</h4>
+            <p className="text-sm text-gray-500 leading-relaxed">Cross-disciplinary partnerships with researchers, institutions, and industry leaders</p>
           </div>
         </div>
       </div>

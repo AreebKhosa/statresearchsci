@@ -10,7 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Mail, Phone, MapPin, Linkedin, CheckCircle } from "lucide-react";
+import { Mail, Phone, MapPin, CheckCircle, ArrowRight } from "lucide-react";
 
 export default function ContactSection() {
   const { toast } = useToast();
@@ -58,94 +58,116 @@ export default function ContactSection() {
   ];
 
   return (
-    <section id="contact" className="pt-4 pb-8 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="pt-0 pb-16 md:pb-24 bg-white relative overflow-hidden">
+      {/* Decorative background element */}
+      <div className="absolute top-0 right-0 -mr-40 -mt-40 w-96 h-96 rounded-full bg-[#1d6fa4] opacity-[0.03] blur-3xl pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 -ml-40 -mb-40 w-96 h-96 rounded-full bg-[#15803d] opacity-[0.03] blur-3xl pointer-events-none"></div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16 fade-in">
-          <h2 className="text-4xl font-bold text-portfolio-primary mb-4">Let's Collaborate</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xs font-semibold tracking-[0.2em] uppercase text-portfolio-secondary mb-3">
+            Get in Touch
+          </p>
+          <h2 className="text-4xl sm:text-5xl font-bold text-portfolio-primary leading-tight mb-5">
+            Let's Collaborate
+          </h2>
+          <p className="text-lg text-gray-500 max-w-3xl mx-auto leading-relaxed">
             Interested in statistical consulting, research collaboration, or speaking opportunities? Let's discuss how we can work together.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          <div className="fade-in">
-            <div className="space-y-8">
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-portfolio-secondary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Mail className="text-portfolio-secondary h-6 w-6" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-portfolio-primary mb-2">Email</h3>
-                  <p className="text-gray-600">isrs.researchsci@gmail.com</p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-portfolio-success/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Phone className="text-portfolio-success h-6 w-6" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-portfolio-primary mb-2">Phone</h3>
-                  <p className="text-gray-600">03343660481</p>
-                  <p className="text-gray-600">03194071196</p>
-                  <p className="text-sm text-gray-500">Available for consultation calls</p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-portfolio-accent/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <MapPin className="text-portfolio-accent h-6 w-6" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-portfolio-primary mb-2">Location</h3>
-                  <p className="text-gray-600">University of Sindh, Jamshoro, Pakistan</p>
-                  <p className="text-sm text-gray-500">Available for remote collaboration</p>
-                </div>
-              </div>
-
-              {/* <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-portfolio-secondary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Linkedin className="text-portfolio-secondary h-6 w-6" />
-                </div>
-                 <div>
-                  <h3 className="text-lg font-semibold text-portfolio-primary mb-2">Professional Networks</h3>
-                  <div className="space-y-2">
-                    <a href="#" className="text-portfolio-secondary hover:text-portfolio-primary block transition-colors duration-200">LinkedIn: /in/sarah-chen-stats</a>
-                    <a href="#" className="text-portfolio-secondary hover:text-portfolio-primary block transition-colors duration-200">ResearchGate: Sarah_Chen_Statistics</a>
-                    <a href="#" className="text-portfolio-secondary hover:text-portfolio-primary block transition-colors duration-200">ORCID: 0000-0000-0000-0000</a>
+        <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
+          <div className="lg:col-span-2 fade-in">
+            <div className="space-y-6">
+              <div 
+                className="p-6 rounded-2xl border border-gray-100 bg-white transition-transform duration-300 hover:-translate-y-1"
+                style={{ boxShadow: "0 4px 20px rgba(0,0,0,0.03), 0 1px 4px rgba(0,0,0,0.02)" }}
+              >
+                <div className="flex items-start gap-5">
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "rgba(29,111,164,0.1)", boxShadow: "0 4px 12px rgba(29,111,164,0.15)" }}>
+                    <Mail className="h-5 w-5" style={{ color: "#1d6fa4" }} />
                   </div>
-                </div> 
-              </div> */}
+                  <div>
+                    <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-1">Email</h3>
+                    <a href="mailto:isrs.researchsci@gmail.com" className="text-lg font-bold text-gray-900 hover:text-portfolio-primary transition-colors">isrs.researchsci@gmail.com</a>
+                  </div>
+                </div>
+              </div>
+
+              <div 
+                className="p-6 rounded-2xl border border-gray-100 bg-white transition-transform duration-300 hover:-translate-y-1"
+                style={{ boxShadow: "0 4px 20px rgba(0,0,0,0.03), 0 1px 4px rgba(0,0,0,0.02)" }}
+              >
+                <div className="flex items-start gap-5">
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "rgba(21,128,61,0.1)", boxShadow: "0 4px 12px rgba(21,128,61,0.15)" }}>
+                    <Phone className="h-5 w-5" style={{ color: "#15803d" }} />
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-1">Phone</h3>
+                    <div className="space-y-1">
+                      <p className="text-lg font-bold text-gray-900">03343660481</p>
+                      <p className="text-lg font-bold text-gray-900">03194071196</p>
+                    </div>
+                    <p className="text-xs font-medium text-gray-500 mt-2">Available for consultation calls</p>
+                  </div>
+                </div>
+              </div>
+
+              <div 
+                className="p-6 rounded-2xl border border-gray-100 bg-white transition-transform duration-300 hover:-translate-y-1"
+                style={{ boxShadow: "0 4px 20px rgba(0,0,0,0.03), 0 1px 4px rgba(0,0,0,0.02)" }}
+              >
+                <div className="flex items-start gap-5">
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "rgba(124,58,237,0.1)", boxShadow: "0 4px 12px rgba(124,58,237,0.15)" }}>
+                    <MapPin className="h-5 w-5" style={{ color: "#7c3aed" }} />
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-1">Location</h3>
+                    <p className="text-lg font-bold text-gray-900">University of Sindh</p>
+                    <p className="text-gray-600 mt-1">Jamshoro, Pakistan</p>
+                    <p className="text-xs font-medium text-gray-500 mt-2">Available for remote collaboration</p>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div className="mt-12 p-6 bg-white rounded-xl shadow-lg">
-              <h3 className="text-xl font-semibold text-portfolio-primary mb-4">Collaboration Opportunities</h3>
-              <ul className="space-y-3">
+            <div 
+              className="mt-8 p-8 rounded-2xl bg-gray-50 border border-gray-100"
+            >
+              <h3 className="text-lg font-bold text-portfolio-primary mb-6">Collaboration Opportunities</h3>
+              <ul className="space-y-4">
                 {collaborationOpportunities.map((opportunity, index) => (
-                  <li key={index} className="flex items-center space-x-3">
-                    <CheckCircle className="h-5 w-5 text-portfolio-success" />
-                    <span className="text-gray-600">{opportunity}</span>
+                  <li key={index} className="flex items-start gap-3">
+                    <CheckCircle className="h-5 w-5 text-[#15803d] flex-shrink-0 mt-0.5" />
+                    <span className="text-sm font-medium text-gray-700 leading-snug">{opportunity}</span>
                   </li>
                 ))}
               </ul>
             </div>
           </div>
 
-          <div className="bg-white p-8 rounded-2xl shadow-lg fade-in">
-            <h3 className="text-2xl font-bold text-portfolio-primary mb-6">Send a Message</h3>
+          <div 
+            className="lg:col-span-3 bg-white p-8 sm:p-12 rounded-3xl border border-gray-100 fade-in"
+            style={{ boxShadow: "0 8px 40px rgba(0,0,0,0.06), 0 2px 10px rgba(0,0,0,0.03)" }}
+          >
+            <div className="mb-10">
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Send a Message</h3>
+              <p className="text-gray-500">Fill out the form below and I'll get back to you as soon as possible.</p>
+            </div>
+            
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid sm:grid-cols-2 gap-6">
                   <FormField
                     control={form.control}
                     name="name"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-sm font-semibold text-portfolio-primary">Name *</FormLabel>
+                        <FormLabel className="text-sm font-bold text-gray-700">Name <span className="text-red-500">*</span></FormLabel>
                         <FormControl>
                           <Input 
                             placeholder="Your name" 
-                            className="focus:ring-2 focus:ring-portfolio-secondary focus:border-transparent"
+                            className="h-12 bg-gray-50 border-gray-200 focus:bg-white focus:ring-2 focus:ring-[#1d6fa4]/20 focus:border-[#1d6fa4] transition-all"
                             {...field} 
                           />
                         </FormControl>
@@ -158,12 +180,12 @@ export default function ContactSection() {
                     name="email"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-sm font-semibold text-portfolio-primary">Email *</FormLabel>
+                        <FormLabel className="text-sm font-bold text-gray-700">Email <span className="text-red-500">*</span></FormLabel>
                         <FormControl>
                           <Input 
                             type="email"
                             placeholder="your.email@domain.com" 
-                            className="focus:ring-2 focus:ring-portfolio-secondary focus:border-transparent"
+                            className="h-12 bg-gray-50 border-gray-200 focus:bg-white focus:ring-2 focus:ring-[#1d6fa4]/20 focus:border-[#1d6fa4] transition-all"
                             {...field} 
                           />
                         </FormControl>
@@ -177,10 +199,10 @@ export default function ContactSection() {
                   name="subject"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-sm font-semibold text-portfolio-primary">Subject *</FormLabel>
+                      <FormLabel className="text-sm font-bold text-gray-700">Subject <span className="text-red-500">*</span></FormLabel>
                       <Select onValueChange={field.onChange} value={field.value}>
                         <FormControl>
-                          <SelectTrigger className="focus:ring-2 focus:ring-portfolio-secondary focus:border-transparent">
+                          <SelectTrigger className="h-12 bg-gray-50 border-gray-200 focus:bg-white focus:ring-2 focus:ring-[#1d6fa4]/20 focus:border-[#1d6fa4] transition-all">
                             <SelectValue placeholder="Select collaboration type" />
                           </SelectTrigger>
                         </FormControl>
@@ -201,12 +223,12 @@ export default function ContactSection() {
                   name="message"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-sm font-semibold text-portfolio-primary">Message *</FormLabel>
+                      <FormLabel className="text-sm font-bold text-gray-700">Message <span className="text-red-500">*</span></FormLabel>
                       <FormControl>
                         <Textarea 
-                          rows={5}
+                          rows={6}
                           placeholder="Tell me about your project or collaboration idea..." 
-                          className="focus:ring-2 focus:ring-portfolio-secondary focus:border-transparent"
+                          className="bg-gray-50 border-gray-200 focus:bg-white focus:ring-2 focus:ring-[#1d6fa4]/20 focus:border-[#1d6fa4] transition-all resize-none"
                           {...field} 
                         />
                       </FormControl>
@@ -214,13 +236,17 @@ export default function ContactSection() {
                     </FormItem>
                   )}
                 />
-                <Button 
-                  type="submit" 
-                  disabled={contactMutation.isPending}
-                  className="w-full bg-portfolio-secondary hover:bg-blue-600 text-white py-4 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105"
-                >
-                  {contactMutation.isPending ? "Sending..." : "Send Message"}
-                </Button>
+                <div className="pt-2">
+                  <Button 
+                    type="submit" 
+                    disabled={contactMutation.isPending}
+                    className="w-full bg-[#1d6fa4] hover:bg-[#0369a1] text-white h-14 rounded-xl font-bold text-lg transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg shadow-[#1d6fa4]/20 flex items-center justify-center gap-2"
+                  >
+                    {contactMutation.isPending ? "Sending..." : (
+                      <>Send Message <ArrowRight className="h-5 w-5" /></>
+                    )}
+                  </Button>
+                </div>
               </form>
             </Form>
           </div>
